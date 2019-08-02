@@ -34,6 +34,12 @@ dependencies {
     //Firebase
     implementation 'com.google.firebase:firebase-core:17.0.1'
 
+    //Material Design
+    implementation "com.google.android.material:material:1.1.0-alpha08"
+
+    //Debugging
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
