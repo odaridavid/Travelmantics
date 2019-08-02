@@ -8,11 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.blaccoder.travelmantics.R
 
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class AddTravelDestinationFragment : Fragment() {
 
     override fun onCreateView(
