@@ -1,4 +1,4 @@
-package com.blaccoder.travelmantics.ui
+package com.blaccoder.travelmantics.ui.travel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
