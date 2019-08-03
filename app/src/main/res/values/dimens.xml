@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Margins-->
+    <dimen name="margin_medium">32dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+
+    <!--Padding-->
+    <dimen name="padding_small">8dp</dimen>
+
+    <dimen name="login_app_name_text_size">24sp</dimen>
+    <dimen name="login_card_surface_min_height">200dp</dimen>
+
+    <dimen name="line_separator_height">2dp</dimen>
+
+</resources>
