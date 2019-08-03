@@ -8,7 +8,6 @@ import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.TextWatcherImpl
 import com.blaccoder.travelmantics.closeKeyboard
 import kotlinx.android.synthetic.main.activity_authentication.*
-import timber.log.Timber
 
 class AuthenticationActivity : AppCompatActivity() {
 
@@ -19,11 +18,8 @@ class AuthenticationActivity : AppCompatActivity() {
         email_edit_text.addTextChangedListener(object : TextWatcherImpl {
             override fun onTextChanged(chararr: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (!chararr.isNullOrBlank()) {
-                    Timber.d("Got Text from $chararr")
                     authViewModel.hasEmail(email_edit_text.text.toString())
-                    authViewModel.changeSignInButtonState()
-                    sign_in_button.isEnabled = authViewModel.isReadyToAuthenticate.value!!
-
+                    updateSignInButton(authViewModel)
                 }
             }
 
@@ -31,8 +27,7 @@ class AuthenticationActivity : AppCompatActivity() {
                 super.afterTextChanged(s)
                 if (s.toString().isEmpty()) {
                     authViewModel.hasNoEmail()
-                    authViewModel.changeSignInButtonState()
-                    sign_in_button.isEnabled = authViewModel.isReadyToAuthenticate.value!!
+                    updateSignInButton(authViewModel)
                     closeKeyboard(this@AuthenticationActivity, email_edit_text)
                 }
             }
@@ -41,8 +36,7 @@ class AuthenticationActivity : AppCompatActivity() {
             override fun onTextChanged(chararr: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (!chararr.isNullOrBlank()) {
                     authViewModel.hasPassword(password_edit_text.text.toString())
-                    authViewModel.changeSignInButtonState()
-                    sign_in_button.isEnabled = authViewModel.isReadyToAuthenticate.value!!
+                    updateSignInButton(authViewModel)
                 }
             }
 
@@ -50,13 +44,17 @@ class AuthenticationActivity : AppCompatActivity() {
                 super.afterTextChanged(s)
                 if (s.toString().isEmpty()) {
                     authViewModel.hasNoPassword()
-                    authViewModel.changeSignInButtonState()
-                    sign_in_button.isEnabled = authViewModel.isReadyToAuthenticate.value!!
+                    updateSignInButton(authViewModel)
                     closeKeyboard(this@AuthenticationActivity, password_edit_text)
                 }
             }
         })
 
+    }
+
+    private fun updateSignInButton(authViewModel: AuthViewModel) {
+        authViewModel.changeSignInButtonState()
+        sign_in_button.isEnabled = authViewModel.isReadyToAuthenticate.value!!
     }
 
 }
