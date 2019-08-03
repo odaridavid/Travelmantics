@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -37,12 +39,16 @@ dependencies {
 
     //Firebase
     implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-auth:18.1.0'
 
     //Material Design
     implementation "com.google.android.material:material:1.1.0-alpha08"
 
     //Debugging
     implementation "com.jakewharton.timber:timber:4.7.1"
+
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0-alpha02"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
