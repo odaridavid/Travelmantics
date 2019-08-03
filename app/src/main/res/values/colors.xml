@@ -14,5 +14,7 @@
     <color name="color_on_background">#757575</color>
     <color name="color_on_surface">#000000</color>
     <color name="color_on_error">#000000</color>
+
+    <color name="color_button_disabled">#757474</color>
 </resources>
 

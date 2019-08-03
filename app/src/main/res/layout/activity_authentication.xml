@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AuthenticationActivity">
+    tools:context=".ui.auth.AuthenticationActivity">
 
     <TextView
         android:id="@+id/login_app_title_text_view"
@@ -79,8 +79,9 @@
                 android:layout_marginStart="@dimen/margin_default"
                 android:layout_marginEnd="@dimen/margin_default"
                 android:layout_marginBottom="@dimen/margin_default"
-                android:backgroundTint="?attr/colorSecondary"
                 android:text="@string/label_sign_in"
+                android:enabled="false"
+                android:backgroundTint="@color/button_states"
                 android:textColor="?attr/colorOnSecondary" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
