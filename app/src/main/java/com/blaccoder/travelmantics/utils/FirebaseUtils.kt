@@ -1,4 +1,4 @@
-package com.blaccoder.travelmantics
+package com.blaccoder.travelmantics.utils
 
 import com.firebase.ui.auth.AuthUI
 

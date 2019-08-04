@@ -1,4 +1,4 @@
-package com.blaccoder.travelmantics
+package com.blaccoder.travelmantics.utils
 
 import android.content.Context
 import android.widget.Toast
