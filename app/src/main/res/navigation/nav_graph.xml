@@ -7,24 +7,28 @@
 
     <fragment
         android:id="@+id/addTravelDestinationFragment"
-        android:name="com.blaccoder.travelmantics.ui.AddTravelDealFragment"
+        android:name="com.blaccoder.travelmantics.ui.insert.AddTravelDealFragment"
         android:label="Add Deal"
         tools:layout="@layout/fragment_add_travel_deal" />
     <fragment
         android:id="@+id/travelDestinationsFragment"
-        android:name="com.blaccoder.travelmantics.ui.TravelDealFragment"
+        android:name="com.blaccoder.travelmantics.ui.deals.TravelDealsFragment"
         android:label="Travel Deals"
         tools:layout="@layout/fragment_travel_deals">
         <action
             android:id="@+id/action_travelDestinationsFragment_to_addTravelDestinationFragment"
-            app:destination="@id/addTravelDestinationFragment" />
+            app:destination="@id/addTravelDestinationFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_travelDestinationsFragment_to_travelDealDetail"
             app:destination="@id/travelDealDetail" />
     </fragment>
     <fragment
         android:id="@+id/travelDealDetail"
-        android:name="com.blaccoder.travelmantics.ui.TravelDealDetailFragment"
+        android:name="com.blaccoder.travelmantics.ui.detail.TravelDealDetailFragment"
         android:label="Travel Deal"
         tools:layout="@layout/fragment_travel_deal_detail" />
 </navigation>

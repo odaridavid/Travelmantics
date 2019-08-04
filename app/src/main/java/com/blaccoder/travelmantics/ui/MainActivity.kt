@@ -4,27 +4,32 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.utils.RC_SIGN_IN
-import com.blaccoder.travelmantics.utils.providers
-import com.firebase.ui.auth.AuthUI
+import com.blaccoder.travelmantics.utils.authUiIntent
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startActivityForResult(
-            AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setAvailableProviders(providers)
-                .setIsSmartLockEnabled(true)
-                .build(),
-            RC_SIGN_IN
-        )
+
+        startActivityForResult(authUiIntent(), RC_SIGN_IN)
+
+        navController = findNavController(R.id.nav_host_fragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

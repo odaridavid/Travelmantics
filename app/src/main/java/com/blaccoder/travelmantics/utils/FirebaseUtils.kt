@@ -1,5 +1,6 @@
 package com.blaccoder.travelmantics.utils
 
+import android.content.Intent
 import com.firebase.ui.auth.AuthUI
 
 /**
@@ -15,3 +16,11 @@ val providers = arrayListOf(
     AuthUI.IdpConfig.PhoneBuilder().build(),
     AuthUI.IdpConfig.GoogleBuilder().build()
 )
+
+fun authUiIntent(): Intent {
+    return AuthUI.getInstance()
+        .createSignInIntentBuilder()
+        .setAvailableProviders(providers)
+        .setIsSmartLockEnabled(true)
+        .build()
+}

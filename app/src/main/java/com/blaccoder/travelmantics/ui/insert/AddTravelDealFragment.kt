@@ -1,4 +1,4 @@
-package com.blaccoder.travelmantics.ui
+package com.blaccoder.travelmantics.ui.insert
 
 
 import android.os.Bundle
@@ -15,8 +15,8 @@ class AddTravelDealFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_add_travel_deal, container, false)
+        val v = inflater.inflate(R.layout.fragment_add_travel_deal, container, false)
+        return v
     }
 
 

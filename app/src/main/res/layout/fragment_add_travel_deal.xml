@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddTravelDealFragment">
+    android:layout_margin="@dimen/margin_default"
+    android:orientation="vertical"
+    tools:context=".ui.insert.AddTravelDealFragment">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/destination_name_text_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_destination_name"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/destination_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/price_text_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_price"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/price_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/destination_description_text_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:hint="@string/hint_destination_description"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/destination_description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:inputType="number"
+            android:minHeight="@dimen/description_edit_text_min_height" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:background="@drawable/button_background_rounded"
+        android:backgroundTint="?colorAccent"
+        android:gravity="center"
+        android:text="@string/select_image"
+        android:textColor="?colorOnSecondary"
+        app:icon="@drawable/ic_add_pic"
+        app:iconTint="?colorOnSecondary" />
 
 </LinearLayout>

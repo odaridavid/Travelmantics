@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Travelmantics</string>
+    <string name="hint_destination_name">Destination Name</string>
+    <string name="hint_destination_description">Destination Description</string>
+    <string name="select_image">Select Image</string>
+    <string name="hint_price">Price</string>
 </resources>

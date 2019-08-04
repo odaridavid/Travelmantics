@@ -1,4 +1,4 @@
-package com.blaccoder.travelmantics.ui
+package com.blaccoder.travelmantics.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
