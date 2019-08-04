@@ -6,9 +6,9 @@ package com.blaccoder.travelmantics.model
  *
  **/
 data class TravelDeal(
-    val id: Long = 0L,
     val title: String,
     val description: String,
     val price: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val id: Long = 0L
 )

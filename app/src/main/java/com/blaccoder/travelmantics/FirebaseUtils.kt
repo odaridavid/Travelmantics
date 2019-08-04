@@ -1,6 +1,7 @@
-package com.blaccoder.travelmantics.utils
+package com.blaccoder.travelmantics
 
 import android.content.Intent
+import com.blaccoder.travelmantics.model.TravelDeal
 import com.firebase.ui.auth.AuthUI
 
 /**
@@ -23,4 +24,12 @@ fun authUiIntent(): Intent {
         .setAvailableProviders(providers)
         .setIsSmartLockEnabled(true)
         .build()
+}
+
+fun saveToFirestore(deal: TravelDeal) {
+
+}
+
+fun removeFromFirestore(id: Long) {
+
 }

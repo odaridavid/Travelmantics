@@ -8,9 +8,9 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.blaccoder.travelmantics.R
+import com.blaccoder.travelmantics.RC_SIGN_IN
+import com.blaccoder.travelmantics.authUiIntent
 import com.blaccoder.travelmantics.services.FirebaseAuthState
-import com.blaccoder.travelmantics.utils.RC_SIGN_IN
-import com.blaccoder.travelmantics.utils.authUiIntent
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import timber.log.Timber

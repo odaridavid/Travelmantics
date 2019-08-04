@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin_default"
     android:orientation="vertical"
-    tools:context=".ui.insert.AddTravelDealFragment">
+    tools:context=".ui.details.TravelDealFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/destination_name_text_layout"
@@ -71,5 +71,12 @@
         android:textColor="?colorOnSecondary"
         app:icon="@drawable/ic_add_pic"
         app:iconTint="?colorOnSecondary" />
+
+    <ImageView
+        android:id="@+id/selected_image_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:contentDescription="@string/cd_location_picture" />
 
 </LinearLayout>
