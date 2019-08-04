@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.blaccoder.travelmantics.R
 
-class TravelDealDetail : Fragment() {
+class TravelDealDetailFragment : Fragment() {
 
 
     override fun onCreateView(
