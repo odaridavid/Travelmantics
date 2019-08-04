@@ -7,4 +7,8 @@
 
     <string name="label_sign_in">Sign In</string>
     <string name="label_or">or</string>
+    <string name="firebase_user_sign_in_error">There is no user record corresponding to this identifier. The user may have been deleted.</string>
+
+    <!--Sign Up Screen-->
+    <string name="sign_up_message">A moment while we set you up.</string>
 </resources>
