@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/travelDealsFragment">
+
+    <fragment
+        android:id="@+id/addTravelDealFragment"
+        android:name="com.blaccoder.travelmantics.ui.travel.AddTravelDealFragment"
+        android:label="fragment_add_travel"
+        tools:layout="@layout/fragment_add_travel" />
+    <fragment
+        android:id="@+id/travelDealsFragment"
+        android:name="com.blaccoder.travelmantics.ui.travel.TravelDealsFragment"
+        android:label="fragment_travel_destinations"
+        tools:layout="@layout/fragment_travel_destinations" />
+</navigation>

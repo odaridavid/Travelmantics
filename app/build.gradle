@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -49,6 +51,12 @@ dependencies {
 
     //Lifecycle
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0-alpha02"
+
+    //Navigation
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.1.0-beta02"){
+        exclude group:'androidx.fragment'
+    }
+    implementation "androidx.navigation:navigation-ui-ktx:2.1.0-beta02"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
