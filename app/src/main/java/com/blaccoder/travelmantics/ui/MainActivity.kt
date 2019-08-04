@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.blaccoder.travelmantics.R
+import com.blaccoder.travelmantics.services.FirebaseAuthState
 import com.blaccoder.travelmantics.utils.RC_SIGN_IN
 import com.blaccoder.travelmantics.utils.authUiIntent
 import com.firebase.ui.auth.IdpResponse
@@ -17,15 +18,25 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
 
     lateinit var navController: NavController
+    lateinit var authStateListener: FirebaseAuth.AuthStateListener
+    lateinit var firebaseAuth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        startActivityForResult(authUiIntent(), RC_SIGN_IN)
-
         navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        authStateListener = FirebaseAuth.AuthStateListener { auth ->
+            if (auth.currentUser == null) {
+                startActivityForResult(authUiIntent(), RC_SIGN_IN)
+            }
+        }
+        lifecycle.addObserver(FirebaseAuthState(firebaseAuth, authStateListener))
     }
 
     override fun onSupportNavigateUp(): Boolean {
