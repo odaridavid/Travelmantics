@@ -52,6 +52,11 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.1.0-alpha09'
 
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+
+    implementation "com.google.firebase:firebase-firestore:20.2.0"
+
+    //Logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     //Navigation
