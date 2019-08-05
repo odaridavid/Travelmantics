@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Travelmantics</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_destination_name">Destination Name</string>
+    <string name="hint_destination_description">Destination Description</string>
+    <string name="select_image">Select Image</string>
+    <string name="hint_price">Price</string>
+    <string name="option_save">Save</string>
+    <string name="cd_location_picture">Location Picture</string>
+    <string name="label_logout">Logout</string>
+    <string name="option_delete">Delete</string>
 </resources>

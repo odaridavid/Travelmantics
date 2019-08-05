@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/travelDeals">
+
+    <fragment
+        android:id="@+id/travelDealDetail"
+        android:name="com.blaccoder.travelmantics.ui.details.TravelDealFragment"
+        android:label="Travel  Deal"
+        tools:layout="@layout/fragment_travel_deal" />
+    <fragment
+        android:id="@+id/travelDeals"
+        android:name="com.blaccoder.travelmantics.ui.deals.TravelDealsFragment"
+        android:label="Travel Deals"
+        tools:layout="@layout/fragment_travel_deals">
+        <action
+            android:id="@+id/action_travelDestinationsFragment_to_addTravelDestinationFragment"
+            app:destination="@id/travelDealDetail"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+</navigation>

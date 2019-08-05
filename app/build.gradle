@@ -4,7 +4,17 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
+    signingConfigs {
+//        debug {
+//            storeFile file('/home/blackcoder/kstrs/travelmantics.jks')
+//            storePassword 'travelmantics'
+//            keyAlias = 'key_travelmantics'
+//            keyPassword 'travelmantics'
+//        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
     defaultConfig {
@@ -40,12 +50,28 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
     implementation 'com.google.firebase:firebase-auth:18.1.0'
 
-    implementation 'com.google.android.material:material:1.1.0-alpha08'
+    implementation 'com.google.android.material:material:1.1.0-alpha09'
 
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+
+    implementation "com.google.firebase:firebase-firestore:20.2.0"
+
+    //Logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.1.0-beta02") {
+        exclude group: 'androidx.fragment'
+    }
+    implementation "androidx.navigation:navigation-ui-ktx:2.1.0-beta02"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    implementation "org.permissionsdispatcher:permissionsdispatcher:4.5.0"
+    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0"
+
 }
 apply plugin: 'com.google.gms.google-services'

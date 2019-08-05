@@ -1,4 +1,4 @@
-package com.blaccoder.travelmantics
+package com.blaccoder.travelmantics.ui
 
 import android.content.Context
 import android.widget.Toast
@@ -9,10 +9,10 @@ import android.widget.Toast
  *
  **/
 
-fun Toast.showShortMessage(context: Context, message: String) {
+fun showShortMessage(context: Context, message: String) {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
 
-fun Toast.showLongMessage(context: Context, message: String) {
+fun showLongMessage(context: Context, message: String) {
     Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 }
