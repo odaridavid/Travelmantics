@@ -2,10 +2,12 @@ package com.blaccoder.travelmantics
 
 import android.content.Context
 import android.content.Intent
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.blaccoder.travelmantics.ui.showShortMessage
 import com.firebase.ui.auth.AuthUI
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FirebaseFirestore
+import timber.log.Timber
 
 /**
  * Created By David Odari
@@ -32,19 +34,23 @@ fun authUiIntent(): Intent {
 object FirebaseRoles {
 
     private const val ADMIN_COLLECTION = "admin"
-    var isAdmin:Boolean = false
 
-    fun isAdmin(db: FirebaseFirestore, uid: String): Boolean? {
+    private val _isAdmin: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
+    val isAdmin: LiveData<Boolean>
+        get() = _isAdmin
+
+
+    fun isAdmin(db: FirebaseFirestore, uid: String) {
         db.collection(ADMIN_COLLECTION)
             .get()
-            .addOnSuccessListener(OnSuccessListener { admins ->
-                if (admins.isEmpty) return@OnSuccessListener
-                for (admin in admins) {
-                    isAdmin = admin.id == uid
+            .addOnCompleteListener { querySnapshot ->
+                for (docs in querySnapshot.result!!.documents) {
+                    _isAdmin.value = uid == docs.id
+                    Timber.d("${isAdmin.value}")
                 }
-            })
-        return isAdmin
+            }
     }
+
 }
 
 fun logOut(context: Context) {
