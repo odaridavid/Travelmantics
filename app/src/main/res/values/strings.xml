@@ -1,11 +1,23 @@
 <resources>
+
     <string name="app_name">Travelmantics</string>
+
+    <!--Add Travel Deal-->
     <string name="hint_destination_name">Destination Name</string>
     <string name="hint_destination_description">Destination Description</string>
-    <string name="select_image">Select Image</string>
     <string name="hint_price">Price</string>
-    <string name="option_save">Save</string>
+    <string name="label_select_image">Select Image</string>
     <string name="cd_location_picture">Location Picture</string>
-    <string name="label_logout">Logout</string>
+
+    <!--Travel Deal Menu Options-->
+    <string name="option_save">Save</string>
     <string name="option_delete">Delete</string>
+
+    <!--Main View Options-->
+    <string name="option_logout">Logout</string>
+
+    <!--Add Travel Deal Submit Status-->
+    <string name="message_empty_fields">Empty Fields</string>
+    <string name="message_saved">Saved</string>
+
 </resources>

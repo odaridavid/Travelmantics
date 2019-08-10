@@ -70,5 +70,5 @@ fun getTravelDeals(query: Query): FirestoreRecyclerOptions<TravelDealTimestamped
         .build()
 }
 
- val query = FirebaseFirestore.getInstance().collection("deals").orderBy("price")
+val query = FirebaseFirestore.getInstance().collection(DEALS_COLLECTION).orderBy(TRAVEL_DEAL_PRICE_FIELD)
 
