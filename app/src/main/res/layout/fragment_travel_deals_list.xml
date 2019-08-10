@@ -6,12 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.deals.TravelDealsListFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/deals_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/padding_small"
+        tools:listitem="@layout/travel_deal_list_layout"
+        tools:itemCount="4"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/travel_deal_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
-        android:elevation="4dp"
+        android:elevation="@dimen/elevation_small"
         android:src="@drawable/ic_add"
         android:visibility="gone"
         app:fabSize="normal"

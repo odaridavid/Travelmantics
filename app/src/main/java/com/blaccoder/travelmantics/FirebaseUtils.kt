@@ -4,9 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.blaccoder.travelmantics.model.TravelDealTimestamped
 import com.blaccoder.travelmantics.ui.showShortMessage
 import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import timber.log.Timber
 
 /**
@@ -32,7 +35,7 @@ fun authUiIntent(): Intent {
 }
 
 object FirebaseRoles {
-
+    //TODO Move to viewmodel
     private const val ADMIN_COLLECTION = "admin"
 
     private val _isAdmin: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
@@ -60,4 +63,12 @@ fun logOut(context: Context) {
             showShortMessage(context, "Signed Out")
         }
 }
+
+fun getTravelDeals(query: Query): FirestoreRecyclerOptions<TravelDealTimestamped> {
+    return FirestoreRecyclerOptions.Builder<TravelDealTimestamped>()
+        .setQuery(query, TravelDealTimestamped::class.java)
+        .build()
+}
+
+ val query = FirebaseFirestore.getInstance().collection("deals").orderBy("price")
 
