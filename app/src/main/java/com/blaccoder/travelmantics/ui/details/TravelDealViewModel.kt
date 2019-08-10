@@ -18,25 +18,17 @@ class TravelDealViewModel(private val db: FirebaseFirestore) : ViewModel() {
 
     fun saveToFirestore(deal: TravelDeal) {
         db.collection(DEALS_COLLECTION)
-            .document(deal.id.toString())
+            .document()
             .set(deal.withTimeStamp())
-            .addOnSuccessListener {
-                Timber.d(TravelDealViewModel::class.java.simpleName, "Successfully Added")
-            }
-            .addOnFailureListener { e ->
-                Timber.d(TravelDealViewModel::class.java.simpleName, e.toString())
-            }
+            .addOnSuccessListener { Timber.d("Successfully Added") }
+            .addOnFailureListener { e -> Timber.d(e.toString()) }
     }
 
     fun removeFromFirestore(id: String) {
         db.collection(DEALS_COLLECTION)
             .document(id)
             .delete()
-            .addOnSuccessListener {
-                Timber.d(TravelDealViewModel::class.java.simpleName, "Successfully Deleted")
-            }
-            .addOnFailureListener { e ->
-                Timber.d(TravelDealViewModel::class.java.simpleName, e.toString())
-            }
+            .addOnSuccessListener { Timber.d("Successfully Deleted") }
+            .addOnFailureListener { e -> Timber.d(e.toString()) }
     }
 }
