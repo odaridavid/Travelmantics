@@ -8,22 +8,28 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.blaccoder.travelmantics.R
-import com.blaccoder.travelmantics.ui.showShortMessage
-import com.firebase.ui.auth.AuthUI
-import kotlinx.android.synthetic.main.fragment_travel_deals.view.*
+import com.blaccoder.travelmantics.logOut
+import com.blaccoder.travelmantics.ui.ViewModelFactory
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_travel_deals_list.view.*
+import timber.log.Timber
 
-class TravelDealsFragment : Fragment() {
+class TravelDealsListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_travel_deals, container, false)
+        val v = inflater.inflate(R.layout.fragment_travel_deals_list, container, false)
         v.travel_deal_fab.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_travelDestinationsFragment_to_addTravelDestinationFragment)
         }
-        val viewModel = ViewModelProviders.of(this).get(TravelDealsViewModel::class.java)
+        val viewModel = ViewModelProviders.of(
+            this,
+            ViewModelFactory(FirebaseFirestore.getInstance())
+        )[TravelDealsListViewModel::class.java]
         viewModel.displayButton.observe(this, Observer { isAdmin ->
+            Timber.d("Is It admin =  $isAdmin")
             if (isAdmin) {
                 v.travel_deal_fab.visibility = View.VISIBLE
             } else {
@@ -36,11 +42,7 @@ class TravelDealsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_logout) {
-            AuthUI.getInstance()
-                .signOut(context!!)
-                .addOnCompleteListener {
-                    showShortMessage(context!!, "Signed Out")
-                }
+            logOut(context!!)
         }
         return super.onOptionsItemSelected(item)
     }

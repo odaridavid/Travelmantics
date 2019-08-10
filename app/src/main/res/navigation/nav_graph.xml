@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_travel_deal" />
     <fragment
         android:id="@+id/travelDeals"
-        android:name="com.blaccoder.travelmantics.ui.deals.TravelDealsFragment"
+        android:name="com.blaccoder.travelmantics.ui.deals.TravelDealsListFragment"
         android:label="Travel Deals"
-        tools:layout="@layout/fragment_travel_deals">
+        tools:layout="@layout/fragment_travel_deals_list">
         <action
             android:id="@+id/action_travelDestinationsFragment_to_addTravelDestinationFragment"
             app:destination="@id/travelDealDetail"

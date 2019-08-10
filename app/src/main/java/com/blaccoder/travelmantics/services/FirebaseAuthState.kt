@@ -7,7 +7,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import com.blaccoder.travelmantics.RC_SIGN_IN
 import com.blaccoder.travelmantics.authUiIntent
-import com.blaccoder.travelmantics.ui.deals.TravelDealsViewModel
+import com.blaccoder.travelmantics.ui.deals.TravelDealsListViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
  * On 04/08/19
  *
  **/
-class FirebaseAuthState(activity: Activity, viewModel: ViewModel?) :
+class FirebaseAuthState(activity: Activity, viewModel: ViewModel) :
     LifecycleObserver {
 
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -24,14 +24,11 @@ class FirebaseAuthState(activity: Activity, viewModel: ViewModel?) :
     private val authStateListener: FirebaseAuth.AuthStateListener
 
     init {
-        val db = FirebaseFirestore.getInstance()
-
         authStateListener = FirebaseAuth.AuthStateListener { auth ->
             if (auth.currentUser == null) {
                 activity.startActivityForResult(authUiIntent(), RC_SIGN_IN)
             } else {
-                if (viewModel != null)
-                    (viewModel as TravelDealsViewModel).updateButtonStatus(firebaseAuth, db)
+                (viewModel as TravelDealsListViewModel).updateButtonStatus(firebaseAuth)
             }
         }
     }

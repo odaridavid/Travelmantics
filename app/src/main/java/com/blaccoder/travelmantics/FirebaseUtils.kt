@@ -1,10 +1,11 @@
 package com.blaccoder.travelmantics
 
+import android.content.Context
 import android.content.Intent
-import com.blaccoder.travelmantics.model.TravelDeal
+import com.blaccoder.travelmantics.ui.showShortMessage
 import com.firebase.ui.auth.AuthUI
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FirebaseFirestore
-import timber.log.Timber
 
 /**
  * Created By David Odari
@@ -28,34 +29,29 @@ fun authUiIntent(): Intent {
         .build()
 }
 
-fun saveToFirestore(deal: TravelDeal) {
-
-}
-
-fun removeFromFirestore(id: Long) {
-
-}
-
 object FirebaseRoles {
 
-    private var isAdmin = false
+    private const val ADMIN_COLLECTION = "admin"
+    var isAdmin:Boolean = false
 
-    fun checkAdminStatus(db: FirebaseFirestore, uid: String): Boolean {
-//        TODO Decrease time complexity
-        db.collection("admin")
-            .addSnapshotListener { querySnapshot, _ ->
-                if (!querySnapshot!!.isEmpty) {
-                    for (x in querySnapshot.documents) {
-                        if (x.id.equals(uid)) {
-                            isAdmin = true
-                            Timber.d("Is Admin")
-                        } else {
-                            isAdmin = false
-                        }
-                    }
+    fun isAdmin(db: FirebaseFirestore, uid: String): Boolean? {
+        db.collection(ADMIN_COLLECTION)
+            .get()
+            .addOnSuccessListener(OnSuccessListener { admins ->
+                if (admins.isEmpty) return@OnSuccessListener
+                for (admin in admins) {
+                    isAdmin = admin.id == uid
                 }
-            }
+            })
         return isAdmin
     }
+}
+
+fun logOut(context: Context) {
+    AuthUI.getInstance()
+        .signOut(context)
+        .addOnCompleteListener {
+            showShortMessage(context, "Signed Out")
+        }
 }
 
