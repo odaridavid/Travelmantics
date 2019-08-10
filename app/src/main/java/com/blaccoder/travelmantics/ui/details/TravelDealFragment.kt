@@ -1,6 +1,7 @@
 package com.blaccoder.travelmantics.ui.details
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -9,8 +10,10 @@ import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.model.TravelDeal
 import com.blaccoder.travelmantics.ui.ViewModelFactory
 import com.blaccoder.travelmantics.ui.showLongMessage
+import com.blaccoder.travelmantics.ui.showShortMessage
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_travel_deal.view.*
+import permissions.dispatcher.RuntimePermissions
 
 
 class TravelDealFragment : Fragment() {
@@ -34,12 +37,7 @@ class TravelDealFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_save -> {
-                val title = fragView.destination_name_edit_text.text.toString()
-                val description = fragView.destination_description_edit_text.text.toString()
-                val price = fragView.price_edit_text.text.toString()
-                viewModel.saveToFirestore(TravelDeal(title, description, price, ""))
-                showLongMessage(context!!, "Saved")
-                clearFields()
+                saveTravelDeal()
                 true
             }
             R.id.action_delete -> {
@@ -51,10 +49,27 @@ class TravelDealFragment : Fragment() {
         }
     }
 
+    private fun saveTravelDeal() {
+        val title = fragView.destination_name_edit_text.text.toString()
+        val description = fragView.destination_description_edit_text.text.toString()
+        val price = fragView.price_edit_text.text.toString()
+        if (title.isBlank() && price.isBlank() && price.isBlank()) {
+            showShortMessage(context!!, "Empty Fields")
+        } else {
+            viewModel.saveToFirestore(TravelDeal(title, description, price, ""))
+            showLongMessage(context!!, "Saved")
+            clearFields()
+        }
+    }
+
     private fun clearFields() {
         fragView.destination_description_edit_text.setText("")
         fragView.destination_name_edit_text.setText("")
         fragView.price_edit_text.setText("")
+    }
+
+    fun selectTravelDestinationImage() {
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -62,5 +77,8 @@ class TravelDealFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 
 }

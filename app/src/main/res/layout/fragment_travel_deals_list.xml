@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.deals.TravelDealsListFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/deals_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        tools:listitem="@layout/travel_deal_list_layout"
+        tools:itemCount="4"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/travel_deal_fab"
         android:layout_width="wrap_content"

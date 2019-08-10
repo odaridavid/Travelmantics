@@ -27,10 +27,10 @@ fun TravelDeal.withTimeStamp(): TravelDealTimestamped {
 }
 
 data class TravelDealTimestamped(
-    val title: String,
-    val description: String,
-    val price: String,
-    val imageUrl: String,
+    var title: String = "",
+    var description: String = "",
+    var price: String = "",
+    var imageUrl: String = "",
     val id: Long = 0L,
     val timeStamp: String = Timestamp(Date().time).toString()
 )

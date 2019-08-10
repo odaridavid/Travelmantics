@@ -49,6 +49,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.0.1'
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
     implementation 'com.google.firebase:firebase-auth:18.1.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:5.0.0'
 
     implementation 'com.google.android.material:material:1.1.0-alpha09'
 
