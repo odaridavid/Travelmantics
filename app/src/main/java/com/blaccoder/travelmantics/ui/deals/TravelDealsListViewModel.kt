@@ -3,13 +3,10 @@ package com.blaccoder.travelmantics.ui.deals
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.blaccoder.travelmantics.FirebaseRoles
 import com.blaccoder.travelmantics.FirebaseRoles.isAdmin
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -32,16 +29,10 @@ class TravelDealsListViewModel(private val db: FirebaseFirestore) : ViewModel() 
     }
 
     fun updateButtonStatus(firebaseAuth: FirebaseAuth) {
-        var isAdmin: Boolean
-        viewModelScope.launch {
-            val adminStatus = async(Dispatchers.IO) {
-                Timber.d("Update Button State for ${firebaseAuth.uid}")
-                isAdmin = isAdmin(db, firebaseAuth.uid!!)!!
-                Timber.d("is Admin:$isAdmin")
-                _displayButton.value = isAdmin
-            }
-            adminStatus.await()
-        }
+        Timber.d("Update Button State for ${firebaseAuth.uid}")
+        isAdmin(db, firebaseAuth.uid!!)
+        Timber.d("is Admin:${_displayButton.value}")
     }
+
 
 }
