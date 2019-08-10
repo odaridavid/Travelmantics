@@ -24,13 +24,11 @@ class FirebaseAuthState(activity: Activity, viewModel: ViewModel) :
     private val authStateListener: FirebaseAuth.AuthStateListener
 
     init {
-        val db = FirebaseFirestore.getInstance()
-
         authStateListener = FirebaseAuth.AuthStateListener { auth ->
             if (auth.currentUser == null) {
                 activity.startActivityForResult(authUiIntent(), RC_SIGN_IN)
             } else {
-                (viewModel as TravelDealsListViewModel).updateButtonStatus(firebaseAuth, db)
+                (viewModel as TravelDealsListViewModel).updateButtonStatus(firebaseAuth)
             }
         }
     }

@@ -14,6 +14,7 @@ import com.blaccoder.travelmantics.services.FirebaseAuthState
 import com.blaccoder.travelmantics.ui.deals.TravelDealsListViewModel
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
-        val viewModel = ViewModelProviders.of(this).get(TravelDealsListViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this,ViewModelFactory(FirebaseFirestore.getInstance())).get(TravelDealsListViewModel::class.java)
 
         lifecycle.addObserver(FirebaseAuthState(this, viewModel))
     }
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == RC_SIGN_IN) {
             val response = IdpResponse.fromResultIntent(data)
             if (resultCode == Activity.RESULT_OK) {
-                val auth = FirebaseAuth.getInstance()
+//                val auth = FirebaseAuth.getInstance()
             } else {
                 Timber.d("${response?.error?.errorCode}")
             }

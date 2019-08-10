@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blaccoder.travelmantics.FirebaseRoles.isAdmin
-import com.blaccoder.travelmantics.model.TravelDeal
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +17,8 @@ import timber.log.Timber
  * On 05/08/19
  *
  **/
-class TravelDealsListViewModel : ViewModel() {
+class TravelDealsListViewModel(private val db: FirebaseFirestore) : ViewModel() {
+
     private val _displayButton: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val displayButton: LiveData<Boolean>
         get() = _displayButton
@@ -27,12 +27,11 @@ class TravelDealsListViewModel : ViewModel() {
         _displayButton.value = false
         val firebaseAuth = FirebaseAuth.getInstance()
         if (firebaseAuth.currentUser != null) {
-            val db = FirebaseFirestore.getInstance()
-            updateButtonStatus(firebaseAuth, db)
+            updateButtonStatus(firebaseAuth)
         }
     }
 
-    fun updateButtonStatus(firebaseAuth: FirebaseAuth, db: FirebaseFirestore) {
+    fun updateButtonStatus(firebaseAuth: FirebaseAuth) {
         var isAdmin: Boolean
         viewModelScope.launch {
             val adminStatus = async(Dispatchers.IO) {
@@ -44,4 +43,5 @@ class TravelDealsListViewModel : ViewModel() {
             adminStatus.await()
         }
     }
+
 }

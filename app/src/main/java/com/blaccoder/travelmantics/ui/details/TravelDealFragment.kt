@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.model.TravelDeal
+import com.blaccoder.travelmantics.ui.ViewModelFactory
 import com.blaccoder.travelmantics.ui.showLongMessage
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_travel_deal.view.*
 
 
@@ -21,7 +23,10 @@ class TravelDealFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         fragView = inflater.inflate(R.layout.fragment_travel_deal, container, false)
-        viewModel = ViewModelProviders.of(this)[TravelDealViewModel::class.java]
+        viewModel = ViewModelProviders.of(
+            this,
+            ViewModelFactory(FirebaseFirestore.getInstance())
+        )[TravelDealViewModel::class.java]
         setHasOptionsMenu(true)
         return fragView
     }
