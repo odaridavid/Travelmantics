@@ -9,16 +9,16 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.logOut
-import kotlinx.android.synthetic.main.fragment_travel_deals.view.*
+import kotlinx.android.synthetic.main.fragment_travel_deals_list.view.*
 import timber.log.Timber
 
-class TravelDealsFragment : Fragment() {
+class TravelDealsListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_travel_deals, container, false)
+        val v = inflater.inflate(R.layout.fragment_travel_deals_list, container, false)
         v.travel_deal_fab.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_travelDestinationsFragment_to_addTravelDestinationFragment)
         }

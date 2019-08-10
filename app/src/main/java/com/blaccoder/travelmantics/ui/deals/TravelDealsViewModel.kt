@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blaccoder.travelmantics.FirebaseRoles.isAdmin
+import com.blaccoder.travelmantics.model.TravelDeal
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -42,6 +43,12 @@ class TravelDealsViewModel : ViewModel() {
             adminStatus.await()
             _displayButton.value = isAdmin
         }
+    }
+    fun saveToFirestore(deal: TravelDeal) {
+
+    }
+
+    fun removeFromFirestore(id: String) {
 
     }
 
