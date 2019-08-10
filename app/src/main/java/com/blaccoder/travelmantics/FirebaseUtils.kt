@@ -49,7 +49,6 @@ object FirebaseRoles {
             .addOnCompleteListener { querySnapshot ->
                 for (docs in querySnapshot.result!!.documents) {
                     _isAdmin.value = uid == docs.id
-                    Timber.d("${isAdmin.value}")
                 }
             }
     }
@@ -60,7 +59,7 @@ fun logOut(context: Context) {
     AuthUI.getInstance()
         .signOut(context)
         .addOnCompleteListener {
-            showShortMessage(context, "Signed Out")
+            showShortMessage(context, context.getString(R.string.message_signed_out))
         }
 }
 

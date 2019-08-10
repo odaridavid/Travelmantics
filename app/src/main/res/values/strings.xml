@@ -19,5 +19,6 @@
     <!--Add Travel Deal Submit Status-->
     <string name="message_empty_fields">Empty Fields</string>
     <string name="message_saved">Saved</string>
+    <string name="message_signed_out">Signed Out</string>
 
 </resources>
