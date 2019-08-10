@@ -14,4 +14,4 @@ ALC's 5 days challenge *2.0*
 A version not using firebase-ui for auth is on the branch ```authentication```
 check it out and contribute.
 
-&copy;David Odari,2019
+<i>&copy;David Odari,2019</i>
