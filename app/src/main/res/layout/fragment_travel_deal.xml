@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
-            android:inputType="number"
+            android:inputType="text"
             android:minHeight="@dimen/description_edit_text_min_height" />
 
     </com.google.android.material.textfield.TextInputLayout>
