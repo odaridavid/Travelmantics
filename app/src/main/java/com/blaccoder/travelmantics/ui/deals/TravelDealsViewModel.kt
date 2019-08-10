@@ -3,9 +3,13 @@ package com.blaccoder.travelmantics.ui.deals
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.blaccoder.travelmantics.FirebaseRoles.checkAdminStatus
+import androidx.lifecycle.viewModelScope
+import com.blaccoder.travelmantics.FirebaseRoles.isAdmin
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -23,14 +27,22 @@ class TravelDealsViewModel : ViewModel() {
         val firebaseAuth = FirebaseAuth.getInstance()
         if (firebaseAuth.currentUser != null) {
             val db = FirebaseFirestore.getInstance()
-            _displayButton.value = checkAdminStatus(db, firebaseAuth.uid!!)
+            updateButtonStatus(firebaseAuth, db)
         }
     }
 
     fun updateButtonStatus(firebaseAuth: FirebaseAuth, db: FirebaseFirestore) {
-        Timber.d("Update Button State")
-        _displayButton.value = checkAdminStatus(db, firebaseAuth.uid!!)
-        Timber.d("${_displayButton.value}")
+        var isAdmin = false
+        viewModelScope.launch {
+            val adminStatus = async(Dispatchers.IO) {
+                Timber.d("Update Button State for ${firebaseAuth.uid}")
+                isAdmin = isAdmin(db, firebaseAuth.uid!!)!!
+                Timber.d("is Admin:${_displayButton.value}")
+            }
+            adminStatus.await()
+            _displayButton.value = isAdmin
+        }
+
     }
 
 }

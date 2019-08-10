@@ -8,9 +8,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.blaccoder.travelmantics.R
-import com.blaccoder.travelmantics.ui.showShortMessage
-import com.firebase.ui.auth.AuthUI
+import com.blaccoder.travelmantics.logOut
 import kotlinx.android.synthetic.main.fragment_travel_deals.view.*
+import timber.log.Timber
 
 class TravelDealsFragment : Fragment() {
 
@@ -24,6 +24,7 @@ class TravelDealsFragment : Fragment() {
         }
         val viewModel = ViewModelProviders.of(this).get(TravelDealsViewModel::class.java)
         viewModel.displayButton.observe(this, Observer { isAdmin ->
+            Timber.d("Is It admin =  $isAdmin")
             if (isAdmin) {
                 v.travel_deal_fab.visibility = View.VISIBLE
             } else {
@@ -36,11 +37,7 @@ class TravelDealsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_logout) {
-            AuthUI.getInstance()
-                .signOut(context!!)
-                .addOnCompleteListener {
-                    showShortMessage(context!!, "Signed Out")
-                }
+            logOut(context!!)
         }
         return super.onOptionsItemSelected(item)
     }
