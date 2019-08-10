@@ -27,16 +27,15 @@ class TravelDealsFirestoreAdapter(options: FirestoreRecyclerOptions<TravelDealTi
     }
 
     override fun onBindViewHolder(viewholder: TravelDealViewHolder, position: Int, data: TravelDealTimestamped) {
-        Timber.d("$data")
         viewholder.bind(data)
     }
 
     inner class TravelDealViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(timestamped: TravelDealTimestamped) {
-            val dest = itemView.findViewById<TextView>(R.id.destination_title_text_view)
-            val price = itemView.findViewById<TextView>(R.id.destination_price_text_view)
-            dest.text = timestamped.title
-            price.text = timestamped.price
+        fun bind(travelDealTimestamped : TravelDealTimestamped) {
+            val destinationName = itemView.findViewById<TextView>(R.id.destination_title_text_view)
+            val destinationPrice = itemView.findViewById<TextView>(R.id.destination_price_text_view)
+            destinationName.text = travelDealTimestamped.title
+            destinationPrice.text = travelDealTimestamped.price
         }
     }
 }

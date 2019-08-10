@@ -1,6 +1,7 @@
 package com.blaccoder.travelmantics.ui.details
 
 import androidx.lifecycle.ViewModel
+import com.blaccoder.travelmantics.DEALS_COLLECTION
 import com.blaccoder.travelmantics.model.TravelDeal
 import com.blaccoder.travelmantics.model.withTimeStamp
 import com.google.firebase.firestore.FirebaseFirestore
@@ -12,8 +13,6 @@ import timber.log.Timber
  * On 10/08/19
  *
  **/
-private const val DEALS_COLLECTION = "deals"
-
 class TravelDealViewModel(private val db: FirebaseFirestore) : ViewModel() {
 
     fun saveToFirestore(deal: TravelDeal) {

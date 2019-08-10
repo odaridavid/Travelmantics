@@ -68,7 +68,7 @@
         android:background="@drawable/button_background_rounded"
         android:backgroundTint="?colorAccent"
         android:gravity="center"
-        android:text="@string/select_image"
+        android:text="@string/label_select_image"
         android:textColor="?colorOnSecondary"
         app:icon="@drawable/ic_add_pic"
         app:iconTint="?colorOnSecondary" />
