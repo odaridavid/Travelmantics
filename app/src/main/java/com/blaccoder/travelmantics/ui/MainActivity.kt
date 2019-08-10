@@ -11,7 +11,7 @@ import androidx.navigation.ui.NavigationUI
 import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.RC_SIGN_IN
 import com.blaccoder.travelmantics.services.FirebaseAuthState
-import com.blaccoder.travelmantics.ui.deals.TravelDealsViewModel
+import com.blaccoder.travelmantics.ui.deals.TravelDealsListViewModel
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import timber.log.Timber
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
-        val viewModel = ViewModelProviders.of(this).get(TravelDealsViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(TravelDealsListViewModel::class.java)
 
         lifecycle.addObserver(FirebaseAuthState(this, viewModel))
     }

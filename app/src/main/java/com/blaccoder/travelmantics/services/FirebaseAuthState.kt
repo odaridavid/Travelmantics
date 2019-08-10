@@ -1,16 +1,13 @@
 package com.blaccoder.travelmantics.services
 
 import android.app.Activity
-import android.content.Context
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import com.blaccoder.travelmantics.RC_SIGN_IN
 import com.blaccoder.travelmantics.authUiIntent
-import com.blaccoder.travelmantics.ui.deals.TravelDealsViewModel
-import com.blaccoder.travelmantics.ui.showShortMessage
-import com.firebase.ui.auth.AuthUI
+import com.blaccoder.travelmantics.ui.deals.TravelDealsListViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -33,7 +30,7 @@ class FirebaseAuthState(activity: Activity, viewModel: ViewModel) :
             if (auth.currentUser == null) {
                 activity.startActivityForResult(authUiIntent(), RC_SIGN_IN)
             } else {
-                (viewModel as TravelDealsViewModel).updateButtonStatus(firebaseAuth, db)
+                (viewModel as TravelDealsListViewModel).updateButtonStatus(firebaseAuth, db)
             }
         }
     }

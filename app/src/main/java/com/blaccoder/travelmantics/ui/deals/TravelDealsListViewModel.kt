@@ -18,7 +18,7 @@ import timber.log.Timber
  * On 05/08/19
  *
  **/
-class TravelDealsViewModel : ViewModel() {
+class TravelDealsListViewModel : ViewModel() {
     private val _displayButton: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val displayButton: LiveData<Boolean>
         get() = _displayButton
@@ -33,23 +33,15 @@ class TravelDealsViewModel : ViewModel() {
     }
 
     fun updateButtonStatus(firebaseAuth: FirebaseAuth, db: FirebaseFirestore) {
-        var isAdmin = false
+        var isAdmin: Boolean
         viewModelScope.launch {
             val adminStatus = async(Dispatchers.IO) {
                 Timber.d("Update Button State for ${firebaseAuth.uid}")
                 isAdmin = isAdmin(db, firebaseAuth.uid!!)!!
-                Timber.d("is Admin:${_displayButton.value}")
+                Timber.d("is Admin:$isAdmin")
+                _displayButton.value = isAdmin
             }
             adminStatus.await()
-            _displayButton.value = isAdmin
         }
     }
-    fun saveToFirestore(deal: TravelDeal) {
-
-    }
-
-    fun removeFromFirestore(id: String) {
-
-    }
-
 }

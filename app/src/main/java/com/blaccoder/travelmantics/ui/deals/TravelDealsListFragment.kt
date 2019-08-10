@@ -22,7 +22,7 @@ class TravelDealsListFragment : Fragment() {
         v.travel_deal_fab.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_travelDestinationsFragment_to_addTravelDestinationFragment)
         }
-        val viewModel = ViewModelProviders.of(this).get(TravelDealsViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this)[TravelDealsListViewModel::class.java]
         viewModel.displayButton.observe(this, Observer { isAdmin ->
             Timber.d("Is It admin =  $isAdmin")
             if (isAdmin) {
