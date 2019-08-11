@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.blaccoder.travelmantics.FirebaseRoles
 import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.model.TravelDeal
 import com.blaccoder.travelmantics.ui.ViewModelFactory
@@ -31,6 +33,18 @@ class TravelDealFragment : Fragment() {
             this,
             ViewModelFactory(FirebaseFirestore.getInstance())
         )[TravelDealViewModel::class.java]
+//TODO Readarguments to know whether its in edit or view mode
+        FirebaseRoles.isAdmin.observe(this, Observer { isAdmin ->
+            if (!isAdmin) {
+                rootView.destination_name_edit_text.isEnabled = false
+                rootView.destination_name_edit_text.isFocusable = false
+                rootView.destination_description_edit_text.isEnabled = false
+                rootView.destination_description_edit_text.isFocusable = false
+                rootView.price_edit_text.isEnabled = false
+                rootView.price_edit_text.isFocusable = false
+                rootView.select_image_button.visibility = View.GONE
+            }
+        })
 
         setHasOptionsMenu(true)
 
@@ -50,6 +64,16 @@ class TravelDealFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        FirebaseRoles.isAdmin.observe(this, Observer { isAdmin ->
+            if (!isAdmin) {
+                menu.findItem(R.id.action_delete).isVisible = false
+                menu.findItem(R.id.action_save).isVisible = false
+            }
+        })
+        super.onPrepareOptionsMenu(menu)
     }
 
     private fun saveTravelDeal() {
