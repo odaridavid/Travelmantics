@@ -13,7 +13,7 @@ data class TravelDeal(
     val description: String,
     val price: String,
     val imageUrl: String,
-    val id: Long = 0L
+    val id: String = ""
 )
 
 fun TravelDeal.withTimeStamp(): TravelDealTimestamped {
@@ -26,11 +26,22 @@ fun TravelDeal.withTimeStamp(): TravelDealTimestamped {
     )
 }
 
+fun TravelDealTimestamped.asMap(): MutableMap<String, Any?> {
+    return mutableMapOf(
+        "title" to title,
+        "description" to description,
+        "price" to price,
+        "id" to id,
+        "imageUrl" to imageUrl,
+        "timestamp" to timeStamp
+    )
+}
+
 data class TravelDealTimestamped(
-    var title: String = "",
-    var description: String = "",
-    var price: String = "",
-    var imageUrl: String = "",
-    val id: Long = 0L,
-    val timeStamp: String = Timestamp(Date().time).toString()
+    var title: String? = "",
+    var description: String? = "",
+    var price: String? = "",
+    var imageUrl: String? = "",
+    val id: String? = "",
+    val timeStamp: String? = Timestamp(Date().time).toString()
 )
