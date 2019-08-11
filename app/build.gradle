@@ -35,6 +35,9 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -74,5 +77,6 @@ dependencies {
     implementation "org.permissionsdispatcher:permissionsdispatcher:4.5.0"
     kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0"
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-2'
 }
 apply plugin: 'com.google.gms.google-services'
