@@ -19,7 +19,7 @@ import com.google.firebase.firestore.Query
 
 const val RC_SIGN_IN = 1000
 
-val providers = arrayListOf(
+val providers = mutableListOf(
     AuthUI.IdpConfig.EmailBuilder().build(),
     AuthUI.IdpConfig.PhoneBuilder().build(),
     AuthUI.IdpConfig.GoogleBuilder().build()
