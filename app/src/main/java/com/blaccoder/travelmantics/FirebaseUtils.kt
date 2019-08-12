@@ -10,7 +10,6 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import timber.log.Timber
 
 /**
  * Created By David Odari
@@ -20,7 +19,7 @@ import timber.log.Timber
 
 const val RC_SIGN_IN = 1000
 
-val providers = arrayListOf(
+val providers = mutableListOf(
     AuthUI.IdpConfig.EmailBuilder().build(),
     AuthUI.IdpConfig.PhoneBuilder().build(),
     AuthUI.IdpConfig.GoogleBuilder().build()
@@ -65,7 +64,16 @@ fun logOut(context: Context) {
 
 fun getTravelDeals(query: Query): FirestoreRecyclerOptions<TravelDealTimestamped> {
     return FirestoreRecyclerOptions.Builder<TravelDealTimestamped>()
-        .setQuery(query, TravelDealTimestamped::class.java)
+        .setQuery(query) { docSnapshot ->
+            TravelDealTimestamped(
+                docSnapshot["title"] as String?,
+                docSnapshot["description"] as String?,
+                docSnapshot["price"] as String?,
+                docSnapshot["imageUrl"] as String?,
+                docSnapshot.id,
+                docSnapshot["timeStamp"] as String?
+            )
+        }
         .build()
 }
 

@@ -20,6 +20,7 @@
             android:id="@+id/destination_name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?colorOnSurface"
             android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -36,6 +37,7 @@
             android:id="@+id/price_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?colorOnSurface"
             android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -46,7 +48,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_default"
-
         android:hint="@string/hint_destination_description"
         app:errorEnabled="true">
 
@@ -55,13 +56,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
+            android:textColor="?colorOnSurface"
             android:inputType="textMultiLine"
             android:minHeight="@dimen/description_edit_text_min_height" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_button"
+        android:id="@+id/select_image_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"

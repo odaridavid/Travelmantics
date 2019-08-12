@@ -33,8 +33,10 @@ class TravelDealsListFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_travel_deals_list, container, false)
 
         rootView.travel_deal_fab.setOnClickListener { view ->
+            val bundle = Bundle()
+            bundle.putParcelable(NAV_ARG_TRAVEL_DEAL, null)
             view.findNavController()
-                .navigate(R.id.action_travelDestinationsFragment_to_addTravelDestinationFragment)
+                .navigate(R.id.TravelListToDetailView, bundle)
         }
 
         FirebaseRoles.isAdmin
