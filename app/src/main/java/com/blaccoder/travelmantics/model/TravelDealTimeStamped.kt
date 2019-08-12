@@ -27,6 +27,6 @@ fun TravelDealTimestamped.asMap(): MutableMap<String, Any?> {
         "price" to price,
         "id" to id,
         "imageUrl" to imageUrl,
-        "timestamp" to timeStamp
+        "timeStamp" to timeStamp
     )
 }
