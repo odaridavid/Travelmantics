@@ -20,5 +20,8 @@
     <string name="message_empty_fields">Empty Fields</string>
     <string name="message_saved">Saved</string>
     <string name="message_signed_out">Signed Out</string>
+    <string name="message_deleted">Deleted</string>
+    <string name="message_nothing_to_delete">Nothing to delete</string>
+    <string name="message_edited">Edited</string>
 
 </resources>

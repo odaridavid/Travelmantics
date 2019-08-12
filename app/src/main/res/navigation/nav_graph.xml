@@ -8,13 +8,20 @@
     <fragment
         android:id="@+id/travelDealDetail"
         android:name="com.blaccoder.travelmantics.ui.details.TravelDealFragment"
-        android:label="Travel  Deal"
+        android:label="Travel Deal"
         tools:layout="@layout/fragment_travel_deal" >
         <argument
-            android:name="TravelDeal"
+            android:name="travelDeal"
             app:argType="com.blaccoder.travelmantics.model.TravelDealTimestamped"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/BackToList"
+            app:destination="@id/travelDeals"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/travelDeals"
@@ -22,8 +29,8 @@
         android:label="Travel Deals"
         tools:layout="@layout/fragment_travel_deals_list">
         <action
-            android:id="@+id/ListFragmentToDetailFragment"
-            app:destination="@id/travelDealDetail"
+            android:id="@+id/TravelListToDetailView"
+            app:destination="@+id/travelDealDetail"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right"

@@ -33,10 +33,10 @@ class TravelDealViewModel(private val db: FirebaseFirestore) : ViewModel() {
             .addOnFailureListener { e -> Timber.d(e.toString()) }
     }
 
-    fun updateToFirestore(deal: TravelDealTimestamped) {
+    fun updateToFirestore(newDeal: TravelDealTimestamped, dealId: String) {
         db.collection(DEALS_COLLECTION)
-            .document()
-            .update(deal.asMap())
+            .document(dealId)
+            .update(newDeal.asMap())
             .addOnSuccessListener { Timber.d("Successfully Updated") }
             .addOnFailureListener { e -> Timber.d(e.toString()) }
     }

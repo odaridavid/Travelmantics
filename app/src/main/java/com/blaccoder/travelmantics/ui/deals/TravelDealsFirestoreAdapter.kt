@@ -1,11 +1,13 @@
 package com.blaccoder.travelmantics.ui.deals
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.blaccoder.travelmantics.NAV_ARG_TRAVEL_DEAL
 import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.model.TravelDealTimestamped
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
@@ -37,8 +39,10 @@ class TravelDealsFirestoreAdapter(options: FirestoreRecyclerOptions<TravelDealTi
         }
 
         override fun onClick(view: View) {
+            val bundle = Bundle()
+            bundle.putParcelable(NAV_ARG_TRAVEL_DEAL, getItem(adapterPosition))
             view.findNavController()
-                .navigate(TravelDealsListFragmentDirections.ListFragmentToDetailFragment(getItem(adapterPosition)))
+                .navigate(R.id.TravelListToDetailView, bundle)
         }
 
         fun bind(travelDealTimestamped: TravelDealTimestamped) {
