@@ -9,14 +9,20 @@
         android:id="@+id/travelDealDetail"
         android:name="com.blaccoder.travelmantics.ui.details.TravelDealFragment"
         android:label="Travel  Deal"
-        tools:layout="@layout/fragment_travel_deal" />
+        tools:layout="@layout/fragment_travel_deal" >
+        <argument
+            android:name="TravelDeal"
+            app:argType="com.blaccoder.travelmantics.model.TravelDealTimestamped"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
     <fragment
         android:id="@+id/travelDeals"
         android:name="com.blaccoder.travelmantics.ui.deals.TravelDealsListFragment"
         android:label="Travel Deals"
         tools:layout="@layout/fragment_travel_deals_list">
         <action
-            android:id="@+id/action_travelDestinationsFragment_to_addTravelDestinationFragment"
+            android:id="@+id/ListFragmentToDetailFragment"
             app:destination="@id/travelDealDetail"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right"

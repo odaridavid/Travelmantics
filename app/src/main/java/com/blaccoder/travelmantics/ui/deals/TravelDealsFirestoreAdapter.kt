@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.blaccoder.travelmantics.R
 import com.blaccoder.travelmantics.model.TravelDealTimestamped
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import timber.log.Timber
 
 
 /**
@@ -30,8 +30,18 @@ class TravelDealsFirestoreAdapter(options: FirestoreRecyclerOptions<TravelDealTi
         viewholder.bind(data)
     }
 
-    inner class TravelDealViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(travelDealTimestamped : TravelDealTimestamped) {
+    inner class TravelDealViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(view: View) {
+            view.findNavController()
+                .navigate(TravelDealsListFragmentDirections.ListFragmentToDetailFragment(getItem(adapterPosition)))
+        }
+
+        fun bind(travelDealTimestamped: TravelDealTimestamped) {
             val destinationName = itemView.findViewById<TextView>(R.id.destination_title_text_view)
             val destinationPrice = itemView.findViewById<TextView>(R.id.destination_price_text_view)
             destinationName.text = travelDealTimestamped.title

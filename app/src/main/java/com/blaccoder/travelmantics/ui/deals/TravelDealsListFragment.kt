@@ -34,7 +34,7 @@ class TravelDealsListFragment : Fragment() {
 
         rootView.travel_deal_fab.setOnClickListener { view ->
             view.findNavController()
-                .navigate(R.id.action_travelDestinationsFragment_to_addTravelDestinationFragment)
+                .navigate(TravelDealsListFragmentDirections.ListFragmentToDetailFragment())
         }
 
         FirebaseRoles.isAdmin
