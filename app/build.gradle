@@ -58,13 +58,15 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
     implementation 'com.google.firebase:firebase-auth:18.1.0'
     implementation 'com.firebaseui:firebase-ui-firestore:5.0.0'
-
-    implementation 'com.google.android.material:material:1.1.0-alpha09'
-
-    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
-
+    implementation 'com.google.firebase:firebase-storage:18.1.1'
     implementation "com.google.firebase:firebase-firestore:20.2.0"
 
+    //Material Design
+    implementation 'com.google.android.material:material:1.1.0-alpha09'
+
+    //Lifecycle Components
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    
     //Logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
@@ -78,10 +80,15 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-
+    //Runtime Permissions
     implementation "org.permissionsdispatcher:permissionsdispatcher:4.5.0"
     kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0"
 
+    //Memory Leak Detection
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-2'
+
+    //Image Loading
+    implementation "io.coil-kt:coil:0.6.0"
+
 }
 apply plugin: 'com.google.gms.google-services'
