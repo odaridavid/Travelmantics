@@ -1,8 +1,5 @@
 package com.blaccoder.travelmantics.model
 
-import java.sql.Timestamp
-import java.util.*
-
 /**
  * Created By David Odari
  * On 01/08/19
@@ -13,7 +10,7 @@ data class TravelDeal(
     val description: String,
     val price: String,
     val imageUrl: String,
-    val id: Long = 0L
+    val id: String = ""
 )
 
 fun TravelDeal.withTimeStamp(): TravelDealTimestamped {
@@ -25,12 +22,3 @@ fun TravelDeal.withTimeStamp(): TravelDealTimestamped {
         id = this.id
     )
 }
-
-data class TravelDealTimestamped(
-    var title: String = "",
-    var description: String = "",
-    var price: String = "",
-    var imageUrl: String = "",
-    val id: Long = 0L,
-    val timeStamp: String = Timestamp(Date().time).toString()
-)
